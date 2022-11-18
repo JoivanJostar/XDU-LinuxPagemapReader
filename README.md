@@ -37,8 +37,21 @@ There are four components to pagemap:
    determine which areas of memory are actually mapped and llseek to
    skip over unmapped regions.
    ```
+
+   
+   # 编译运行
+   gcc pagemap.c -o pagemap_reader
+   
    该c程序有2个功能：
+   
    1.convert:指定某个进程的某个虚拟地址，将其转为实际的物理地址
    
-   2.stat:统计当前进程的虚拟页的映射情况，有多少个页被映射为物理页，有多少页被Swap。
+    sudo ./pagemap_reader show pid vitual_address
+     
+   2.stat:统计某个进程的虚拟页的映射情况，有多少个页被映射为物理页，有多少页被Swap。
+   
+    sudo ./pagemap_reader stat pid
+    
    注：运行该程序需要sudo权限。 某些新版本的Linux上无法正常读取 （实测Ubuntu 20无法读取，但是Ubuntu18可以）
+
+
